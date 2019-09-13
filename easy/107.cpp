@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   21.cpp                                             :+:      :+:    :+:   */
+/*   107.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 22:17:30 by mikim             #+#    #+#             */
-/*   Updated: 2019/08/17 22:23:21 by mikim            ###   ########.fr       */
+/*   Created: 2019/09/12 18:28:01 by mikim             #+#    #+#             */
+/*   Updated: 2019/09/12 18:28:42 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,41 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 21. [easy] Merge Two Sorted Lists
+**	LeetCode: 107. [easy] 107. Binary Tree Level Order Traversal II
 */
 
 /**
- * Definition for singly-linked list.
- * struct ListNode {
+ * Definition for a binary tree node.
+ * struct TreeNode {
  *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
 class Solution {
-public:
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-		ListNode	*head;
-		ListNode	*tmp;
+	public:
+		vector<vector<int>> levelOrderBottom(TreeNode* root) {
+			vector<vector<int>>	vvi;
+			vector<int>			vi;
+			queue<TreeNode*>	q[2];
 
-		if (!l1)
-			return l2;
-		if (!l2)
-			return l1;
-		if (l2->val < l1->val) {
-			tmp = l1;
-			l1 = l2;
-			l2 = tmp;
-		}
-		head = l1;
-		while (l1->next && l2) {
-			if (l2->val < l1->next->val) {
-				tmp = l2;
-				l2 = l2->next;
-				tmp->next = l1->next;
-				l1->next = tmp;
+			q[0].push(root);
+			while (!q[0].empty()) {
+				TreeNode *tmp = q[0].front(); q[0].pop();
+				if (tmp) {
+					vi.push_back(tmp->val);
+					q[1].push(tmp->left);
+					q[1].push(tmp->right);
+				}
+				if (q[0].empty()) {
+					if (vi.size() != 0)
+						vvi.push_back(vi);
+					vi.clear();
+					swap(q[0], q[1]);
+				}
 			}
-			else
-				l1 = l1->next;
+			reverse(vvi.begin(), vvi.end());
+			return vvi;
 		}
-		while (l2) {
-			l1->next = l2;
-			l1 = l1->next;
-			l2 = l2->next;
-		}
-		return head;
-	}
 };

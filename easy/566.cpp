@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   223.cpp                                            :+:      :+:    :+:   */
+/*   566.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 22:17:02 by mikim             #+#    #+#             */
-/*   Updated: 2019/08/17 22:23:33 by mikim            ###   ########.fr       */
+/*   Created: 2019/09/12 14:38:46 by mikim             #+#    #+#             */
+/*   Updated: 2019/09/12 14:40:31 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,30 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 223. [medium] Rectangle Area
+**	LeetCode: 566. [easy] Reshape the Matrix
 */
 
 class Solution {
-public:
-    int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
-        if (min(C, G) < max(A, E) || min(D, H) < max(B, F))
-            return (abs(A - C) * abs(B - D)) + (abs(E - G) * abs(F - H));
-        else
-        return (
-            (abs(A - C) * abs(B - D)) -
-            abs(min(C, G) - max(A, E)) * abs(min(D, H) - max(B, F)) +
-            (abs(E - G) * abs(F - H))
-        );
-    }
+	public:
+		vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c) {
+			if (nums.size() * nums[0].size() != r * c)
+				return nums;
+
+			vector<vector<int>>	res;
+			vector<int>			tmp;
+			int					x = 0, y = 0;
+
+			for (int i = 0; i < r; i++) {
+				for (int j = 0; j < c; j++) {
+					tmp.push_back(nums[y][x++]);
+					if (x >= nums[0].size()) {
+						x = 0;
+						y++;
+					}                    
+				}
+				res.push_back(tmp);
+				tmp.clear();
+			}
+			return res;
+		}
 };

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   191.cpp                                            :+:      :+:    :+:   */
+/*   223.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 22:19:31 by mikim             #+#    #+#             */
-/*   Updated: 2019/08/17 22:22:36 by mikim            ###   ########.fr       */
+/*   Created: 2019/08/17 22:17:02 by mikim             #+#    #+#             */
+/*   Updated: 2019/09/12 14:43:05 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,18 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 191. [easy] Number of 1 Bits
+**	LeetCode: 223. [medium] Rectangle Area
 */
 
 class Solution {
-    public:
-        int hammingWeight(uint32_t n) {
-            while (n > 0) {
-                cnt += (1 & n);
-                n >>= 1;
-            }
-            return cnt;
-        }
-
-    private:
-        int cnt;
+	public:
+		int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
+			if (min(C, G) < max(A, E) || min(D, H) < max(B, F))
+				return (abs(A - C) * abs(B - D)) + (abs(E - G) * abs(F - H));
+			else
+				return ((abs(A - C) * abs(B - D)) -
+						abs(min(C, G) - max(A, E)) * abs(min(D, H) - max(B, F)) +
+						(abs(E - G) * abs(F - H))
+				);
+		}
 };

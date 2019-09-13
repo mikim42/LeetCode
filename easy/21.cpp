@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1022.cpp                                           :+:      :+:    :+:   */
+/*   21.cpp                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 22:21:00 by mikim             #+#    #+#             */
-/*   Updated: 2019/08/17 22:22:17 by mikim            ###   ########.fr       */
+/*   Created: 2019/08/17 22:17:30 by mikim             #+#    #+#             */
+/*   Updated: 2019/09/12 14:41:26 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,48 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 1022. [easy] Sum of Root To Leaf Binary Numbers
+**	LeetCode: 21. [easy] Merge Two Sorted Lists
 */
 
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
-public:
-    int sumRootToLeaf(TreeNode* root) {
-        traverse(root, 0);
-        return sum;
-    }
+	public:
+		ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+			ListNode	*head;
+			ListNode	*tmp;
 
-    void    traverse(TreeNode *root, int n) {
-        if (!root)
-            return ;
-
-        n = n * 2 + root->val;
-
-        traverse(root->left, n);
-        traverse(root->right, n);
-
-        if (!root->left && !root->right)
-            sum += n;
-    }
-
-private:
-    int sum;
+			if (!l1)
+				return l2;
+			if (!l2)
+				return l1;
+			if (l2->val < l1->val) {
+				tmp = l1;
+				l1 = l2;
+				l2 = tmp;
+			}
+			head = l1;
+			while (l1->next && l2) {
+				if (l2->val < l1->next->val) {
+					tmp = l2;
+					l2 = l2->next;
+					tmp->next = l1->next;
+					l1->next = tmp;
+				}
+				else
+					l1 = l1->next;
+			}
+			while (l2) {
+				l1->next = l2;
+				l1 = l1->next;
+				l2 = l2->next;
+			}
+			return head;
+		}
 };

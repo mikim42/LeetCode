@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   201.cpp                                            :+:      :+:    :+:   */
+/*   1029.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 22:18:14 by mikim             #+#    #+#             */
-/*   Updated: 2019/08/17 22:23:01 by mikim            ###   ########.fr       */
+/*   Created: 2019/09/12 18:29:24 by mikim             #+#    #+#             */
+/*   Updated: 2019/09/12 18:29:44 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,28 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 201. [medium] Bitwise AND of Numbers Range
+**	LeetCode: 1029. [easy] Two City Scheduling
 */
 
 class Solution {
-public:
-    int rangeBitwiseAnd(int m, int n) {
-        int res = m & n;
-        
-        for (uint32_t i = 1; m + i <= n; i = i * 2) {
-            res &= m + i;
-            if (res == 0)
-                return res;
-        }
-        return res;
-    }
+	public:
+		int twoCitySchedCost(vector<vector<int>>& costs) {
+			sort(costs.begin(), costs.end(), [](auto &a, auto &b) {
+					return abs(a[0] - a[1]) > abs(b[0] - b[1]);
+					}
+				);
+
+			int n = costs.size() / 2, a = 0, b = 0, sum = 0;
+			for (auto x : costs) {
+				if ((a < n && x[0] < x[1]) || b == n) {
+					sum += x[0];
+					a++;
+				}
+				else if ((b < n && x[0] > x[1]) || a == n) {
+					sum += x[1];
+					b++;
+				}
+			}
+			return sum;
+		}
 };
