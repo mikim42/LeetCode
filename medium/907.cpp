@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 18:42:58 by mikim             #+#    #+#             */
-/*   Updated: 2019/09/12 18:43:31 by mikim            ###   ########.fr       */
+/*   Updated: 2019/09/16 08:12:45 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 907. [medium] Sum of Subarray Minimums
+**	LeetCode: 907. Sum of Subarray Minimums [medium]
 */
 
 class Solution {

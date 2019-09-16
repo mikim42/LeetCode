@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 18:32:57 by mikim             #+#    #+#             */
-/*   Updated: 2019/09/12 18:36:12 by mikim            ###   ########.fr       */
+/*   Updated: 2019/09/16 08:11:48 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 628. [easy] Maximum Product of Three Numbers
+**	LeetCode: 628. Maximum Product of Three Numbers [easy]
 */
 
 class Solution {

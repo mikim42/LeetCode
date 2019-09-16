@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   21.cpp                                             :+:      :+:    :+:   */
+/*   876.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 22:17:30 by mikim             #+#    #+#             */
-/*   Updated: 2019/09/16 08:11:26 by mikim            ###   ########.fr       */
+/*   Created: 2019/09/15 17:02:43 by mikim             #+#    #+#             */
+/*   Updated: 2019/09/15 17:03:19 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 21. Merge Two Sorted Lists [easy]
+**	LeetCode: 876. Middle of the Linked List [easy]
 */
 
 /**
@@ -28,36 +28,19 @@
  * };
  */
 class Solution {
-	public:
-		ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-			ListNode	*head;
-			ListNode	*tmp;
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode *p1, *p2;
 
-			if (!l1)
-				return l2;
-			if (!l2)
-				return l1;
-			if (l2->val < l1->val) {
-				tmp = l1;
-				l1 = l2;
-				l2 = tmp;
-			}
-			head = l1;
-			while (l1->next && l2) {
-				if (l2->val < l1->next->val) {
-					tmp = l2;
-					l2 = l2->next;
-					tmp->next = l1->next;
-					l1->next = tmp;
-				}
-				else
-					l1 = l1->next;
-			}
-			while (l2) {
-				l1->next = l2;
-				l1 = l1->next;
-				l2 = l2->next;
-			}
-			return head;
-		}
+        p1 = head;
+        p2 = head;
+        while (p1) {
+            p1 = p1->next;
+            if (p1) {
+                p1 = p1->next;
+                p2 = p2->next;
+            }
+        }
+        return p2;
+    }
 };

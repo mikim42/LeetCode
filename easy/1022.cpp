@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 22:21:00 by mikim             #+#    #+#             */
-/*   Updated: 2019/09/12 14:40:43 by mikim            ###   ########.fr       */
+/*   Updated: 2019/09/16 08:10:21 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 1022. [easy] Sum of Root To Leaf Binary Numbers
+**	LeetCode: 1022. Sum of Root To Leaf Binary Numbers [easy]
 */
 
 class Solution {

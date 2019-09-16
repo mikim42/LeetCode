@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 18:39:15 by mikim             #+#    #+#             */
-/*   Updated: 2019/09/12 18:39:41 by mikim            ###   ########.fr       */
+/*   Updated: 2019/09/16 08:11:02 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 122. [easy] Best Time to Buy and Sell Stock II
+**	LeetCode: 122. Best Time to Buy and Sell Stock II [easy]
 */
 
 class Solution {

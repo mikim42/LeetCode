@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 22:18:14 by mikim             #+#    #+#             */
-/*   Updated: 2019/09/12 14:42:40 by mikim            ###   ########.fr       */
+/*   Updated: 2019/09/16 08:12:25 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 201. [medium] Bitwise AND of Numbers Range
+**	LeetCode: 201. Bitwise AND of Numbers Range [medium]
 */
 
 class Solution {

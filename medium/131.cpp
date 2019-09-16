@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 18:37:44 by mikim             #+#    #+#             */
-/*   Updated: 2019/09/12 18:38:37 by mikim            ###   ########.fr       */
+/*   Updated: 2019/09/16 08:12:20 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 131. [medium] Palindrome Partitioning
+**	LeetCode: 131. Palindrome Partitioning [medium]
 */
 
 class Solution {

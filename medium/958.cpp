@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 18:41:39 by mikim             #+#    #+#             */
-/*   Updated: 2019/09/12 18:42:10 by mikim            ###   ########.fr       */
+/*   Updated: 2019/09/16 08:12:57 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 958. [medium] Check Completeness of a Binary Tree
+**	LeetCode: 958. Check Completeness of a Binary Tree [medium]
 */
 
 /**

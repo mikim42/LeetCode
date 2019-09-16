@@ -6,7 +6,7 @@
 #    By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/12 18:36:42 by mikim             #+#    #+#              #
-#    Updated: 2019/09/12 18:37:12 by mikim            ###   ########.fr        #
+#    Updated: 2019/09/16 08:11:19 by mikim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 # **************************************************************************** #
 
 #
-#	Leetcode: 197 [Easy] Rising Temperature
+#	Leetcode: 197. Rising Temperature [Easy]
 #
 
 select w1.Id as Id from Weather as w1,
