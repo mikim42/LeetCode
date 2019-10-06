@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 18:28:01 by mikim             #+#    #+#             */
-/*   Updated: 2019/09/16 08:10:42 by mikim            ###   ########.fr       */
+/*   Updated: 2019/10/06 09:49:12 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,6 @@
 **	LeetCode: 107. Binary Tree Level Order Traversal II [easy]
 */
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
 class Solution {
 	public:
 		vector<vector<int>> levelOrderBottom(TreeNode* root) {

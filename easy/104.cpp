@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   70.cpp                                             :+:      :+:    :+:   */
+/*   104.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/25 11:20:24 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/06 09:50:23 by mikim            ###   ########.fr       */
+/*   Created: 2019/10/06 09:51:19 by mikim             #+#    #+#             */
+/*   Updated: 2019/10/06 09:51:41 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,31 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 70. Climbing Stairs [easy]
+**	LeetCode: 104. Maximum Depth of Binary Tree [easy]
 */
 
 class Solution {
 	public:
-		int climbStairs(int n) {
-			int prev1 = 1, prev2 = 1;
-			int res = 3;
+		int maxDepth(TreeNode* root) {
+			queue<TreeNode*> q;
+			int size = 0;
+			int depth = 0;
 
-			if (n < 4)
-				return n;
-			while (n > 3) {
-				int tmp = prev1 + prev2;
-				res += tmp;
-				prev1 = prev2;
-				prev2 = tmp;
-				n--;
+			if (!root)
+				return 0;
+			q.push(root);
+			while (!q.empty()) {
+				if (size == 0) {
+					depth++;
+					size = q.size();
+				}
+				TreeNode *tmp = q.front(); q.pop();
+				if (tmp->left)
+					q.push(tmp->left);
+				if (tmp->right)
+					q.push(tmp->right);
+				size--;
 			}
-			return res;
+			return depth;
 		}
 };

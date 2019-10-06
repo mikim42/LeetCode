@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 22:17:30 by mikim             #+#    #+#             */
-/*   Updated: 2019/09/16 08:11:26 by mikim            ###   ########.fr       */
+/*   Updated: 2019/10/06 09:50:11 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,6 @@
 **	LeetCode: 21. Merge Two Sorted Lists [easy]
 */
 
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
 class Solution {
 	public:
 		ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
