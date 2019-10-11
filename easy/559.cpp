@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   824.cpp                                            :+:      :+:    :+:   */
+/*   559.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/10 14:36:44 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/11 12:53:12 by mikim            ###   ########.fr       */
+/*   Created: 2019/10/11 12:52:40 by mikim             #+#    #+#             */
+/*   Updated: 2019/10/11 12:53:01 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,29 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 824. Goat Latin [easy]
+**	LeetCode: 559. Maximum Depth of N-ary Tree [easy]
 */
 
 class Solution {
 	public:
-		string toGoatLatin(string S) {
-			stringstream s(S);
-			vector<string> v;
-			string vowel = "aeiouAEIOU";
+		int maxDepth(Node* root) {
+			queue<Node*> q;
+			int size = 1, depth = 0;
 
-			while (s >> S) {
-				v.push_back(S);
-			}
-			S.clear();
-			for (int i = 0; i < v.size(); i++) {
-				if (vowel.find(v[i][0]) == string::npos)
-					S += v[i].substr(1, v[i].size() - 1) + v[i][0];
-				else
-					S += v[i];
-				S += "maa";
-				for (int j = 0; j < i; j++) {
-					S += "a";
+			if (!root)
+				return depth;
+			q.push(root);
+			while (!q.empty()) {
+				Node *tmp = q.front(); q.pop();
+				size--;
+				for (auto x : tmp->children) {
+					if (x != NULL) q.push(x);
 				}
-				S += " ";
+				if (size == 0) {
+					depth++;
+					size = q.size();
+				}
 			}
-			S.erase(S.size() - 1, 1);
-			return S;
+			return depth;
 		}
 };
