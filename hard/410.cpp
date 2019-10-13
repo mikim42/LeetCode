@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   84.cpp                                             :+:      :+:    :+:   */
+/*   410.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 12:34:42 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/13 08:58:22 by mikim            ###   ########.fr       */
+/*   Updated: 2019/10/13 08:58:14 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,35 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 84. Largest Rectangle in Histogram [hard]
+**	LeetCode: 410. Split Array Largest Sum [hard]
 */
 
 class Solution {
 	public:
-		int largestRectangleArea(vector<int>& h) {
-			stack<int> s;
-			int r = 0;
+		int splitArray(vector<int>& nums, int m) {
+			int L = nums.size();
+			int S[L + 1] = {0};
+			int dp[L] = {0};
 
-			h.push_back(0);
-			for (int i = 0; i < h.size(); i++) {
-				while (!s.empty() && h[s.top()] > h[i]) {
-					int tmp = s.top(); s.pop();
-					int prev = s.empty() ? 0 : s.top() + 1;
-					r = max(r, h[tmp] * (i - prev));
+			for (int i = 0; i < L; i++)
+				S[i + 1] = S[i] + nums[i];
+
+
+			for (int i = 0; i < L; i++)
+				dp[i] = S[L] - S[i];
+
+			for (int s = 1; s < m; s++) {
+				for (int i = 0; i < L - s; i++) {
+					dp[i] = INT_MAX;
+					for (int j = i + 1; j <= L - s; j++) {
+						int t = max(dp[j], S[j]-S[i]);
+						if (t <= dp[i])
+							dp[i] = t;
+						else
+							break;
+					}
 				}
-				s.push(i);
 			}
-			return r;
+			return dp[0];
 		}
 };
