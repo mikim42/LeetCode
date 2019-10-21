@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   55.cpp                                             :+:      :+:    :+:   */
+/*   1200.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 18:37:44 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/21 10:58:52 by mikim            ###   ########.fr       */
+/*   Created: 2019/10/21 11:09:37 by mikim             #+#    #+#             */
+/*   Updated: 2019/10/21 11:09:56 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,23 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 55. Jump Game [medium]
+**	LeetCode: 1200. Minimum Absolute Difference [easy]
 */
 
 class Solution {
 	public:
-		int maxJump(vector<int>& nums, int n) {
-			int max = n + nums[n];
-			int index = n;
-			for (int i = 1; i <= nums[n] && n + i < nums.size(); i++) {
-				if (max < (n + i) + nums[n + i]) {
-					max = (n + i) + nums[n + i];
-					index = n + i;
+		vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
+			map<int, vector<vector<int>>> m;
+			sort(arr.begin(), arr.end());
+
+			for (int i = 0; i < arr.size(); i++) {
+				for (int j = i + 1; j < arr.size(); j++) {
+					int diff = abs(arr[i] - arr[j]);
+					if (!m.empty() && diff > (*m.begin()).first)
+						break ;
+					m[diff].push_back(vector<int>{arr[i], arr[j]});
 				}
 			}
-			return index;
-		}
-
-		bool canJump(vector<int>& nums) {
-			int n = 0, prev = 0;
-			while (n + nums[n] < nums.size() - 1) {
-				prev = n;
-				n = maxJump(nums, n);
-				if (prev == n)
-					return false;
-			}
-			return true;
+			return (*m.begin()).second;
 		}
 };

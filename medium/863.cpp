@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:56:13 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/11 13:56:36 by mikim            ###   ########.fr       */
+/*   Updated: 2019/10/21 10:58:59 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode:  863. All Nodes Distance K in Binary Tree [medium]
+**	LeetCode: 863. All Nodes Distance K in Binary Tree [medium]
 */
 
 class Solution {

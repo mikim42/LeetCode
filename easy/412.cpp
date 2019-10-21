@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   55.cpp                                             :+:      :+:    :+:   */
+/*   412.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 18:37:44 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/21 10:58:52 by mikim            ###   ########.fr       */
+/*   Created: 2019/10/21 11:13:18 by mikim             #+#    #+#             */
+/*   Updated: 2019/10/21 11:13:19 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,24 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 55. Jump Game [medium]
+**	LeetCode: 412. Fizz Buzz [easy]
 */
 
 class Solution {
 	public:
-		int maxJump(vector<int>& nums, int n) {
-			int max = n + nums[n];
-			int index = n;
-			for (int i = 1; i <= nums[n] && n + i < nums.size(); i++) {
-				if (max < (n + i) + nums[n + i]) {
-					max = (n + i) + nums[n + i];
-					index = n + i;
-				}
-			}
-			return index;
-		}
+		vector<string> fizzBuzz(int n) {
+			vector<string> v;
 
-		bool canJump(vector<int>& nums) {
-			int n = 0, prev = 0;
-			while (n + nums[n] < nums.size() - 1) {
-				prev = n;
-				n = maxJump(nums, n);
-				if (prev == n)
-					return false;
+			for (int i = 1; i <= n; i++) {
+				if (i % 15 == 0)
+					v.push_back("FizzBuzz");
+				else if (i % 3 == 0)
+					v.push_back("Fizz");
+				else if (i % 5 == 0)
+					v.push_back("Buzz");
+				else
+					v.push_back(std::to_string(i));
 			}
-			return true;
+			return v;
 		}
 };

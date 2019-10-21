@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   55.cpp                                             :+:      :+:    :+:   */
+/*   872.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 18:37:44 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/21 10:58:52 by mikim            ###   ########.fr       */
+/*   Created: 2019/10/21 10:24:51 by mikim             #+#    #+#             */
+/*   Updated: 2019/10/21 10:25:11 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,31 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 55. Jump Game [medium]
+**	LeetCode: 872. Leaf-Similar Trees [easy]
 */
 
 class Solution {
 	public:
-		int maxJump(vector<int>& nums, int n) {
-			int max = n + nums[n];
-			int index = n;
-			for (int i = 1; i <= nums[n] && n + i < nums.size(); i++) {
-				if (max < (n + i) + nums[n + i]) {
-					max = (n + i) + nums[n + i];
-					index = n + i;
+		vector<int> leafValueSequence(TreeNode *root) {
+			vector<int> v;
+			stack<TreeNode*> st;
+
+			st.push(root);
+			while (!st.empty()) {
+				TreeNode *tmp = st.top(); st.pop();
+				if (!tmp)
+					continue ;
+				if (!tmp->left && !tmp->right)
+					v.push_back(tmp->val);
+				else {
+					st.push(tmp->right);
+					st.push(tmp->left);
 				}
 			}
-			return index;
+			return v;
 		}
 
-		bool canJump(vector<int>& nums) {
-			int n = 0, prev = 0;
-			while (n + nums[n] < nums.size() - 1) {
-				prev = n;
-				n = maxJump(nums, n);
-				if (prev == n)
-					return false;
-			}
-			return true;
+		bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+			return leafValueSequence(root1) == leafValueSequence(root2);
 		}
 };

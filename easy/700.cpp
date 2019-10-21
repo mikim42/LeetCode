@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   55.cpp                                             :+:      :+:    :+:   */
+/*   700.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 18:37:44 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/21 10:58:52 by mikim            ###   ########.fr       */
+/*   Created: 2019/10/21 10:16:36 by mikim             #+#    #+#             */
+/*   Updated: 2019/10/21 10:17:06 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,20 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 55. Jump Game [medium]
+**	LeetCode: 700. Search in a Binary Search Tree [easy]
 */
 
 class Solution {
 	public:
-		int maxJump(vector<int>& nums, int n) {
-			int max = n + nums[n];
-			int index = n;
-			for (int i = 1; i <= nums[n] && n + i < nums.size(); i++) {
-				if (max < (n + i) + nums[n + i]) {
-					max = (n + i) + nums[n + i];
-					index = n + i;
-				}
+		TreeNode* searchBST(TreeNode* root, int val) {
+			while (root) {
+				if (root->val == val)
+					break ;
+				if (root->val > val)
+					root = root->left;
+				else
+					root = root->right;
 			}
-			return index;
-		}
-
-		bool canJump(vector<int>& nums) {
-			int n = 0, prev = 0;
-			while (n + nums[n] < nums.size() - 1) {
-				prev = n;
-				n = maxJump(nums, n);
-				if (prev == n)
-					return false;
-			}
-			return true;
+			return root;
 		}
 };

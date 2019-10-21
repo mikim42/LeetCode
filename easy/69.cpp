@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   55.cpp                                             :+:      :+:    :+:   */
+/*   69.cpp                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 18:37:44 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/21 10:58:52 by mikim            ###   ########.fr       */
+/*   Created: 2019/10/21 10:14:04 by mikim             #+#    #+#             */
+/*   Updated: 2019/10/21 10:14:23 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,16 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 55. Jump Game [medium]
+**	LeetCode: 69. Sqrt(x) [easy]
 */
 
 class Solution {
 	public:
-		int maxJump(vector<int>& nums, int n) {
-			int max = n + nums[n];
-			int index = n;
-			for (int i = 1; i <= nums[n] && n + i < nums.size(); i++) {
-				if (max < (n + i) + nums[n + i]) {
-					max = (n + i) + nums[n + i];
-					index = n + i;
-				}
-			}
-			return index;
-		}
+		int mySqrt(int x) {
+			long sqr = x;
 
-		bool canJump(vector<int>& nums) {
-			int n = 0, prev = 0;
-			while (n + nums[n] < nums.size() - 1) {
-				prev = n;
-				n = maxJump(nums, n);
-				if (prev == n)
-					return false;
-			}
-			return true;
+			while (sqr * sqr > x)
+				sqr = (sqr + x / sqr) / 2;
+			return sqr;
 		}
 };

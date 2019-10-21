@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   55.cpp                                             :+:      :+:    :+:   */
+/*   1185.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 18:37:44 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/21 10:58:52 by mikim            ###   ########.fr       */
+/*   Created: 2019/10/21 11:07:31 by mikim             #+#    #+#             */
+/*   Updated: 2019/10/21 11:08:00 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,32 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 55. Jump Game [medium]
+**	LeetCode: 1185. Day of the Week [easy]
 */
 
 class Solution {
 	public:
-		int maxJump(vector<int>& nums, int n) {
-			int max = n + nums[n];
-			int index = n;
-			for (int i = 1; i <= nums[n] && n + i < nums.size(); i++) {
-				if (max < (n + i) + nums[n + i]) {
-					max = (n + i) + nums[n + i];
-					index = n + i;
-				}
-			}
-			return index;
-		}
+		string dayOfTheWeek(int day, int month, int year) {
+			string days[] = {
+				"Sunday",
+				"Monday",
+				"Tuesday",
+				"Wednesday",
+				"Thursday",
+				"Friday",
+				"Saturday"
+			};
+			int yearCode;
+			int monthCode[] = {0, 0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
+			int centuryCode[] = {4, 2, 0, 6, 4, 2, 0};
+			int leapCode = 0;
 
-		bool canJump(vector<int>& nums) {
-			int n = 0, prev = 0;
-			while (n + nums[n] < nums.size() - 1) {
-				prev = n;
-				n = maxJump(nums, n);
-				if (prev == n)
-					return false;
+			yearCode = ((year % 100) + (year % 100) / 4) % 7;
+			if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0) && month < 3) {
+				leapCode = -1;
 			}
-			return true;
+			int x = (yearCode + monthCode[month] + day +
+					centuryCode[(year / 100 + 4) % 7] + leapCode) % 7;
+			return days[x];
 		}
 };

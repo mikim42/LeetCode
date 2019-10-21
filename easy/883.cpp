@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   55.cpp                                             :+:      :+:    :+:   */
+/*   883.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 18:37:44 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/21 10:58:52 by mikim            ###   ########.fr       */
+/*   Created: 2019/10/21 10:26:05 by mikim             #+#    #+#             */
+/*   Updated: 2019/10/21 10:26:26 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,33 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 55. Jump Game [medium]
+**	LeetCode: 883. Projection Area of 3D Shapes [easy]
 */
 
 class Solution {
 	public:
-		int maxJump(vector<int>& nums, int n) {
-			int max = n + nums[n];
-			int index = n;
-			for (int i = 1; i <= nums[n] && n + i < nums.size(); i++) {
-				if (max < (n + i) + nums[n + i]) {
-					max = (n + i) + nums[n + i];
-					index = n + i;
+		int projectionArea(vector<vector<int>>& grid) {
+			int cnt = 0;
+			int n = grid.size();
+			if (n == 0)
+				return 0;
+			int m = grid[0].size();
+			if (m == 0)
+				return 0;
+
+			map<int, int> my, mx;
+
+			for (int y = 0; y < n; y++) {
+				for (int x = 0; x < m; x++) {
+					if (grid[y][x] > 0) cnt++;
+					my[y] = max(my[y], grid[y][x]);
+					mx[x] = max(mx[x], grid[y][x]);
 				}
 			}
-			return index;
-		}
-
-		bool canJump(vector<int>& nums) {
-			int n = 0, prev = 0;
-			while (n + nums[n] < nums.size() - 1) {
-				prev = n;
-				n = maxJump(nums, n);
-				if (prev == n)
-					return false;
-			}
-			return true;
+			for (auto y : my)
+				cnt += y.second;
+			for (auto x : mx)
+				cnt += x.second;
+			return cnt;
 		}
 };

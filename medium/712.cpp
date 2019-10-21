@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   55.cpp                                             :+:      :+:    :+:   */
+/*   712.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 18:37:44 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/21 10:58:52 by mikim            ###   ########.fr       */
+/*   Created: 2019/10/21 11:14:45 by mikim             #+#    #+#             */
+/*   Updated: 2019/10/21 11:15:04 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,25 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 55. Jump Game [medium]
+**	LeetCode: 712. Minimum ASCII Delete Sum for Two Strings [medium]
 */
 
 class Solution {
 	public:
-		int maxJump(vector<int>& nums, int n) {
-			int max = n + nums[n];
-			int index = n;
-			for (int i = 1; i <= nums[n] && n + i < nums.size(); i++) {
-				if (max < (n + i) + nums[n + i]) {
-					max = (n + i) + nums[n + i];
-					index = n + i;
+		int minimumDeleteSum(string s1, string s2) {
+			int m = s1.size(), n = s2.size();
+			vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+			for (int j = 1; j <= n; j++)
+				dp[0][j] = dp[0][j - 1] + s2[j - 1];
+			for (int i = 1; i <= m; i++) {
+				dp[i][0] = dp[i - 1][0] + s1[i - 1];
+				for (int j = 1; j <= n; j++) {
+					if (s1[i - 1] == s2[j - 1])
+						dp[i][j] = dp[i - 1][j - 1];
+					else
+						dp[i][j] = min(dp[i - 1][j] + s1[i - 1], dp[i][j - 1] + s2[j - 1]);
 				}
 			}
-			return index;
-		}
-
-		bool canJump(vector<int>& nums) {
-			int n = 0, prev = 0;
-			while (n + nums[n] < nums.size() - 1) {
-				prev = n;
-				n = maxJump(nums, n);
-				if (prev == n)
-					return false;
-			}
-			return true;
+			return dp[m][n];
 		}
 };
