@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:09:11 by mikim             #+#    #+#             */
-/*   Updated: 2019/10/10 14:09:42 by mikim            ###   ########.fr       */
+/*   Updated: 2019/10/31 11:10:46 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode:  1071. Greatest Common Divisor of Strings [easy]
+**	LeetCode: 1071. Greatest Common Divisor of Strings [easy]
 */
 
 class Solution {
