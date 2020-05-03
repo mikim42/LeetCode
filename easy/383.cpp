@@ -22,19 +22,11 @@
 class Solution {
 	public:
 		bool canConstruct(string ransomNote, string magazine) {
-			int let[26] = {0};
-			int n = max(magazine.size(), ransomNote.size());
+			int cnt[26] = {0};
 
-			for (int i = 0; i < n; i++) {
-				if (i < ransomNote.size())
-					let[ransomNote[i] - 'a']--;
-				if (i < magazine.size())
-					let[magazine[i] - 'a']++;
-			}
-			for (int i = 0; i < 26; i++) {
-				if (let[i] < 0)
-					return false;
-			}
+			for (auto x : ransomNote) --cnt[x - 'a'];
+			for (auto x : magazine) ++cnt[x - 'a'];
+			for (int i = 0; i < 26; ++i) if (cnt[i] < 0) return false;
 			return true;
 		}
 };
