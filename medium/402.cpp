@@ -2,7 +2,7 @@
 **	LeetCode: 402. Remove K Digits [medium]
 */
 
-}class Solution {
+class Solution {
 	public:
 		string removeKdigits(string num, int k) {
 			if (k >= num.size()) return "0";
@@ -23,4 +23,4 @@
 			}
 			return num.size() - k <= 0 ? "0" : num.substr(0, num.size() - k);
 		}
-};;
+};
