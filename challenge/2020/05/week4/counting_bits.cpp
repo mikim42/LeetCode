@@ -1,7 +1,3 @@
-/*
-**	LeetCode: 338. Counting Bits [medium]
-*/
-
 class Solution {
 	public:
 		vector<int> countBits(int num) {

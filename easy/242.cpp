@@ -16,7 +16,7 @@
 /* ************************************************************************** */
 
 /*
-**	LeetCode: 1. 242. Valid Anagram [easy]
+**	LeetCode: 242. Valid Anagram [easy]
 */
 
 class Solution {
@@ -25,24 +25,11 @@ class Solution {
 			if (s.size() != t.size())
 				return false;
 
-			/*
-			sort(s.begin(), s.end());
-			sort(t.begin(), t.end());
-			for (int i = 0; i < s.size(); i++) {
-				if (s[i] != t[i])
-					return false;
-			}
-			*/
-
-			unordered_map<char, int> m1;
-			unordered_map<char, int> m2;
-			for (int i = 0; i < s.size(); i++) {
-				m1[s[i]]++;
-				m2[t[i]]++;
-			}
-			for (auto &x : m1)
-				if (m2[x.first] != x.second)
-					return false;
+			vector<int> cnt(26, 0);
+			int res = 0;
+			for (int i = 0; i < s.size(); i++)
+				cnt[s[i] - 'a']++, cnt[t[i] - 'a']--;
+			for (auto x : cnt) if (x) return false;
 			return true;
 		}
 };

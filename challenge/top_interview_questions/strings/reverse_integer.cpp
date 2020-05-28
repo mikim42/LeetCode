@@ -1,7 +1,3 @@
-/*
-**	LeetCode: 7. Reverse Integer [easy]
-*/
-
 class Solution {
 	public:
 		int reverse(int x) {
@@ -10,10 +6,10 @@ class Solution {
 
 			x *= neg;
 			while (x > 0) {
-				n *= 10;
-				n += neg * (x % 10);
+				n = n * 10 + neg * (x % 10);
 				x /= 10;
 			}
 			return INT_MIN <= n && n <= INT_MAX ? (int)n : 0;
 		}
 };
+

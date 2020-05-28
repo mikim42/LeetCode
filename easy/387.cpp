@@ -22,22 +22,9 @@
 class Solution {
 	public:
 		int firstUniqChar(string s) {
-			queue<char> q;
-			int let[26] = {0};
-
-			for (int i = 0; i < s.length(); i++) {
-				if (let[s[i] - 97] == 0) {
-					let[s[i] - 97] = i + 1;
-					q.push(s[i]);
-				}
-				else
-					let[s[i] - 97] = -1;
-			}
-			while (!q.empty()) {
-				char c = q.front(); q.pop();
-				if (let[c - 97] > 0)
-					return let[c - 97] - 1;
-			}
+			int letters[26] = {0}, n = s.size();
+			for (auto x : s) ++letters[x - 'a'];
+			for (int i = 0; i < n; ++i) if (letters[s[i] - 'a'] == 1) return i;
 			return -1;
 		}
 };
