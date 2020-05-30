@@ -1,8 +1,4 @@
-/*
-**	LeetCode: 207. Course Schedule [medium]
-*/
-
-}class Solution {
+class Solution {
 	public:
 		bool canTake(vector<int> course[], vector<int>& visited, int n) {
 			if (visited[n] == 1)
@@ -30,4 +26,4 @@
 			}
 			return true;
 		}
-};;
+};
