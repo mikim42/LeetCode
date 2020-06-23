@@ -1,7 +1,3 @@
-/*
-**	LeetCode: 14. Longest Common Prefix [easy]
-*/
-
 class Solution {
 	public:
 		string longestCommonPrefix(vector<string>& strs) {
