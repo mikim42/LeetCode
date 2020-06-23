@@ -1,7 +1,3 @@
-/*
-**	LeetCode: 234. Palindrome Linked List [easy]
-*/
-
 class Solution {
 	private:
 		ListNode *reverseList(ListNode *prev, ListNode *curr) {

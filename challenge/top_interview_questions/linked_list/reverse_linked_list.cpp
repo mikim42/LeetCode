@@ -1,7 +1,3 @@
-/*
-**	LeetCode: 206. Reverse Linked List [easy]
-*/
-
 class Solution {
 	private:
 		ListNode* helper(ListNode* prev, ListNode* curr) {

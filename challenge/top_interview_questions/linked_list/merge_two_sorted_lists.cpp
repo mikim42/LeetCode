@@ -1,7 +1,3 @@
-/*
-**	LeetCode: 21. Merge Two Sorted Lists [easy]
-*/
-
 class Solution {
 	public:
 		ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
