@@ -1,7 +1,3 @@
-/*
-**	LeetCode: 332. Reconstruct Itinerary [medium]
-*/
-
 class Solution {
 	private:
 		void DFS(unordered_map<string, multiset<string>> &flight, string airport, vector<string> &result) {
