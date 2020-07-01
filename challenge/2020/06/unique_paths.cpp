@@ -1,7 +1,3 @@
-/*
-**	LeetCode: 62. Unique Paths [medium]
-*/
-
 class Solution {
 	public:
 		int uniquePaths(int m, int n) {
