@@ -1,7 +1,3 @@
-/*
-**	LeetCode: 104. Maximum Depth of Binary Tree [easy]
-*/
-
 class Solution {
 	public:
 		int maxDepth(TreeNode* root) {
@@ -20,7 +16,7 @@ class Solution {
 				TreeNode *tmp = q.front(); q.pop();
 				if (tmp->left) q.push(tmp->left);
 				if (tmp->right) q.push(tmp->right);
-				--size;
+				size--;
 			}
 			return depth;
 		}
